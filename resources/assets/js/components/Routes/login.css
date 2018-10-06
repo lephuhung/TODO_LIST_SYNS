@@ -1,0 +1,28 @@
+.login-form {
+  position:fixed;
+  top: 30%;
+  left: 50%;
+  width:30em;
+  height:18em;
+  margin-top: -9em; /*set to a negative number 1/2 of your height*/
+  margin-left: -15em; /*set to a negative number 1/2 of your width*/
+
+ 
+  }
+  .avatar{
+    padding-bottom: 5px;
+  
+    margin: 0 auto;
+   
+  }
+.login-form-forgot {
+    float: right;
+  }
+   .login-form-button {
+    width: 100%;
+  }
+  .body{
+    margin: 0 auto;
+    width: 500px; 
+    
+  } 

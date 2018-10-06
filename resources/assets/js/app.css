@@ -1,0 +1,29 @@
+
+ .logo {
+    width: 120px;
+    height: 31px;
+    background: rgba(255,255,255,.2);  
+    margin: 16px 28px 16px 0;
+    float: left;
+  }
+  .title{
+    width: 120px;
+    float: left;
+  }
+  .trigger {
+    font-size: 18px;
+    line-height: 64px;
+    padding: 2px 24px;
+    cursor: pointer;
+    transition: color .3s;
+    float: left;
+  }.trigger:hover {
+    color: #1890ff;
+  }
+  .button_them{
+    padding: 2px;
+    margin: 2px;
+  }
+  .them{
+   padding-left: 24px;
+  }
