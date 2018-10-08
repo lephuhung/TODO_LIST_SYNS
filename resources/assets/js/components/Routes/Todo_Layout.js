@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Card, Row, Col, Steps, message,Button } from 'antd';
 import SubmitForm from '../Components/SubmitForm';
+import FormKhachHang from '../Components/FormKhachHang';
 import './todo.css'
 const Step = Steps.Step;
 

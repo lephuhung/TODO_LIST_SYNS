@@ -13,8 +13,8 @@ use Illuminate\Http\Request;
 |
  */
 /*USER AUTHENCATION */
-Route::post('register', 'UserAuthencation@register');
-Route::post('login', 'UserAuthencation@authenticate');
+Route::post('/register', 'UserAuthencation@register');
+Route::post('/login', 'UserAuthencation@authenticate');
 //Route::get('open', 'DataController@open');
 
 Route::group(['middleware' => ['jwt.verify']], function () {

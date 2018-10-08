@@ -1,25 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Row, Col } from 'antd';
+import { Row, Col,Card } from 'antd';
 import Breadcum from '../Components/Breadcum';
 import DataTable from '../Components/DataTable';
 import SubmitForm from '../Components/SubmitForm';
+import FormKhachHang from '../Components/FormKhachHang';
 class Job_Layout extends React.Component {
 
     render() {
         return (
             <div>
-                <Breadcum />
-                <Row>
+                <Row gutter={16} style={{ padding: '30px' }}>
+
                     <Col span={8}>
-                    <SubmitForm/>
+                        <Card title="Thông tin khách hàng" bordered={false}>
+                            <FormKhachHang />
+                        </Card>
                     </Col>
                     <Col span={16} >
-                    <DataTable/>
                     </Col>
                 </Row>
-
-                
             </div>
         );
 

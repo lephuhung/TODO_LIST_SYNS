@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Input, Select, Button } from 'antd';
+import { Form, Input, Select, Button,Col } from 'antd';
 const FormItem = Form.Item;
 const Option = Select.Option;
 class FormKhach extends React.Component {
@@ -7,12 +7,10 @@ class FormKhach extends React.Component {
     render() {
         const { getFieldDecorator } = this.props.form;
         return (
-
             <Form >
                 <FormItem
                     label="Tên Khách Hàng"
-                    labelCol={{ span: 5 }}
-                    wrapperCol={{ span: 17 }}
+                     wrapperCol={{ span: 12 }}
                 >
                     {getFieldDecorator('name', {
                         rules: [{ required: true, message: 'Nhập mã đơn hàng!' }],
@@ -20,7 +18,6 @@ class FormKhach extends React.Component {
                         <Input />
                     )}
                 </FormItem>
-
                 <FormItem
                     label="Gender"
                     //labelCol={{ span: 5 }}
@@ -52,7 +49,7 @@ class FormKhach extends React.Component {
                             type="text"
 
                             onChange={this.handleNumberChange}
-                            style={{ width: '65%', marginRight: '3%' }}
+                            style={{ width: '35%', marginRight: '3%' }}
                         />
                         <Select
                             
@@ -65,6 +62,7 @@ class FormKhach extends React.Component {
                 </FormItem>
                 <FormItem
                     wrapperCol={{ span: 12, offset: 5 }}
+                    style={{ textAlign: 'right' }}
                 >
                     <Button type="primary" htmlType="submit" onClick={this.onSubmit}>
                         Submit

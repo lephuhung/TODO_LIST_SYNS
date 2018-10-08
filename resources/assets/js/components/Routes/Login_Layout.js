@@ -10,6 +10,9 @@ import {LoginState,setusername } from '../Redux/Action';
 class Login extends React.Component {
   constructor(props) {
     super(props);
+    this.state={
+      error:''
+    }
     this.Login = this.Login.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -27,6 +30,9 @@ class Login extends React.Component {
               this.props.history.push('/');
               localStorage.setItem('isAuthencate', true);
               console.log(response.data.token);
+            }
+            if(response.status===400){
+                this.setState({error:'Sai thông tin đăng nhập'});
             }
           })
           .catch(function (error) {
@@ -54,6 +60,7 @@ class Login extends React.Component {
     return (
         <Row>
         <Col span={8}>
+        <h1>{this.state.error}</h1>
         <Form onSubmit={this.handleSubmit} className="login-form">
           <FormItem>
             <Avatar size={64} icon="user" className='avatar' />
