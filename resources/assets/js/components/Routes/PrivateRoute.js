@@ -7,7 +7,8 @@ const fakeAuth={
     isAuthenticated:true
 }
 const PrivateRoute = ({ component: Component,isAuthenticated, ...rest }) => {
-  return <Route {...rest} render={props => (
+  
+  return <Route {...rest} render={(props) => (
       isAuthenticated
       ? <Component {...props}/>
       : <Redirect to={{

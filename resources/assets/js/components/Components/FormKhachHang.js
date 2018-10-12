@@ -29,8 +29,8 @@ class FormKhach extends React.Component {
                 </FormItem>
                 <FormItem
                     label="Địa chỉ"
-                    labelCol={{ span: 6 }}
-                    wrapperCol={{ span: 7 }}
+                // labelCol={{ span: 5 }}
+                // wrapperCol={{ span: 12 }}
                 >
                     {getFieldDecorator('name', {
                         rules: [{ required: true, message: 'Nhập mã đơn hàng!' }],
@@ -39,37 +39,50 @@ class FormKhach extends React.Component {
                     )}
                 </FormItem>
                 <FormItem
-                    label="Gender"
-                    labelCol={{ span: 5 }}
-                    wrapperCol={{ span: 10 }}
+                    label="Số điện thoại"
+                    labelCol={{ span: 6 }}
+                    wrapperCol={{ span: 18 }}
+                >
+
+                    <Input
+                        type="text"
+                        placeholder='Số điện thoại 123'
+                        onChange={this.handleNumberChange}
+                    />
+
+                </FormItem>
+                <FormItem
+                    label="Địa chỉ Facebook"
+                // labelCol={{ span: 5 }}
+                // wrapperCol={{ span: 12 }}
+                >
+                    {getFieldDecorator('name', {
+                        rules: [{ required: true, message: 'Nhập mã đơn hàng!' }],
+                    })(
+                        <Input />
+                    )}
+                </FormItem>
+                <FormItem
+                    label="Chú Thích"
+                // labelCol={{ span: 5 }}
+                // wrapperCol={{ span: 12 }}
+                >
+                    {getFieldDecorator('name', {
+                        rules: [{ required: true, message: 'Nhập mã đơn hàng!' }],
+                    })(
+                        <Input />
+                    )}
+                </FormItem>
+                <FormItem
+                    wrapperCol={{ span: 12 }}
+
                 >
                     <span>
-                        {getFieldDecorator('gender', {
-                            rules: [{ required: true, message: 'Please select your gender!' }],
-                        })(
-                            <Select
-                                placeholder="Select a option and change input text above"
-                                onChange={this.handleSelectChange}
-                            >
-                                <Option value="male">male</Option>
-                                <Option value="female">female</Option>
-                            </Select>
-                        )}
-                        <Input
-                            type="text"
-                            placeholder='Số điện thoại 123'
-                            onChange={this.handleNumberChange}
-                        />
-                    </span>
-                </FormItem>
-                
-                <FormItem
-                    wrapperCol={{ span: 12, offset: 5 }}
-                    style={{ textAlign: 'right' }}
-                >
-                    <Button type="primary" htmlType="submit" onClick={this.onSubmit}>
-                        Submit
+                        <Button type="primary" style={{ textAlign: 'right', padding: '2px' }} htmlType="submit" onClick={this.onSubmit}>
+                            Lưu khách hàng
                   </Button>
+                        
+                    </span>
                 </FormItem>
             </Form>
         );
@@ -102,7 +115,7 @@ class PriceInput extends React.Component {
         }
     }
 
-    handleNumberChange(e){
+    handleNumberChange(e) {
         const number = parseInt(e.target.value || 0, 10);
         if (isNaN(number)) {
             return;
@@ -113,14 +126,14 @@ class PriceInput extends React.Component {
         this.triggerChange({ number });
     }
 
-    handleCurrencyChange(currency){
+    handleCurrencyChange(currency) {
         if (!('value' in this.props)) {
             this.setState({ currency });
         }
         this.triggerChange({ currency });
     }
 
-    triggerChange (changedValue){
+    triggerChange(changedValue) {
         // Should provide an event to pass value to Form.
         const onChange = this.props.onChange;
         if (onChange) {

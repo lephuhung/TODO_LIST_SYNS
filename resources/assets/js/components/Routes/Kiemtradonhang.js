@@ -2,16 +2,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Row, Col,Card } from 'antd';
 import FormKhachHang from '../Components/FormKhachHang';
-class Job_Layout extends React.Component {
+class Kiemtradonhang_Layout extends React.Component {
 
     render() {
+        console.log(this.props);
         return (
             <div>
                 <Row gutter={16} style={{ padding: '30px' }}>
 
                     <Col span={8}>
                         <Card title="Thông tin khách hàng" bordered={false}>
-                            <FormKhachHang />
+                        <h1>{this.props.id}</h1>
                         </Card>
                     </Col>
                     <Col span={16} >
@@ -26,9 +27,11 @@ class Job_Layout extends React.Component {
     }
 }
 const mapStateToProps = state => ({
+    //todos: getVisibleTodos(state.todos, state.visibilityFilter)
     state: state
 })
 const mapDispatchToProps = dispatch => ({
+    //toggleTodo: id => dispatch(toggleTodo(id))
     dispatch: dispatch
 })
-export default connect(mapStateToProps, mapDispatchToProps)(Job_Layout);
+export default connect(mapStateToProps, mapDispatchToProps)(Kiemtradonhang_Layout);

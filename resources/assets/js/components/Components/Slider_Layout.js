@@ -51,9 +51,17 @@ class Slider_Layout extends React.Component {
                         key="sub1"
                         title={<span><Icon type="shopping-cart" /><span>Kiểm tra mã đơn</span></span>}
                     >
-                        <Menu.Item key="3">Giao hàng nhanh</Menu.Item>
-                        <Menu.Item key="4">Giao hàng tiết kiệm</Menu.Item>
-                        <Menu.Item key="5">Viettel Post</Menu.Item>
+                        <Menu.Item key="3">
+                        <NavLink to="/ghn">
+                            <span>Giao hàng nhanh</span>
+                        </NavLink>
+                        </Menu.Item>
+                        <Menu.Item key="4"><NavLink to="/ghtk">
+                            <span>Giao hàng tiết kiệm</span>
+                        </NavLink></Menu.Item>
+                        <Menu.Item key="5"><NavLink to="/viettel-post">
+                            <span>Viettel-Post</span>
+                        </NavLink></Menu.Item>
                     </SubMenu>
                     <SubMenu
                         key="sub2"
