@@ -57,7 +57,7 @@ class FormKhach extends React.Component {
                         )}
                         <Input
                             type="text"
-                            placeholder='Số điện thoại'
+                            placeholder='Số điện thoại 123'
                             onChange={this.handleNumberChange}
                         />
                     </span>
