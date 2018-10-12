@@ -8,14 +8,27 @@ class FormKhach extends React.Component {
         const { getFieldDecorator } = this.props.form;
         return (
             <Form >
-                <FormItem label="Price">
-                    {getFieldDecorator('price', {
-                        initialValue: { number: 0, currency: 'rmb' },
-                        rules: [{ validator: this.checkPrice }],
-                    })(<PriceInput />)}
+                <FormItem
+                    label='Tên Khách hàng'
+                >
+                    <span>
+                        <Input
+                            type="text"
+                            placeholder='Họ Tên'
+                            onChange={this.handleNumberChange}
+                            style={{ width: '65%', marginRight: '3%' }}
+                        />
+                        <Select
+                            placeholder='Giới tính'
+                            style={{ width: '32%' }}
+                        >
+                            <Option value="rmb">Nam</Option>
+                            <Option value="dollar">Nữ</Option>
+                        </Select>
+                    </span>
                 </FormItem>
                 <FormItem
-                    label="Tên Khách Hàng"
+                    label="Địa chỉ"
                     labelCol={{ span: 6 }}
                     wrapperCol={{ span: 7 }}
                 >
@@ -49,23 +62,7 @@ class FormKhach extends React.Component {
                         />
                     </span>
                 </FormItem>
-                <FormItem>
-                    <span>
-                        <Input
-                            type="text"
-
-                            onChange={this.handleNumberChange}
-                            style={{ width: '35%', marginRight: '3%' }}
-                        />
-                        <Select
-
-                            style={{ width: '32%' }}
-                        >
-                            <Option value="rmb">RMB</Option>
-                            <Option value="dollar">Dollar</Option>
-                        </Select>
-                    </span>
-                </FormItem>
+                
                 <FormItem
                     wrapperCol={{ span: 12, offset: 5 }}
                     style={{ textAlign: 'right' }}
@@ -140,12 +137,14 @@ class PriceInput extends React.Component {
                     type="text"
                     size={size}
                     value={state.number}
+                    placeholder='Họ tên khách hàng'
                     onChange={this.handleNumberChange}
                     style={{ width: '65%', marginRight: '3%' }}
                 />
                 <Input
                     type="text"
                     size={size}
+                    placeholder='nhập số điện thoại'
                     value={state.number}
                     onChange={this.handleNumberChange}
                     style={{ width: '32%' }}
