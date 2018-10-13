@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Row, Col,Card } from 'antd';
+import { Row, Col, Card } from 'antd';
 import FormKhachHang from '../Components/FormKhachHang';
 class Kiemtradonhang_Layout extends React.Component {
 
@@ -8,17 +8,24 @@ class Kiemtradonhang_Layout extends React.Component {
         console.log(this.props);
         return (
             <div>
-                <Row gutter={16} style={{ padding: '30px' }}>
+                <Row gutter={24} style={{ padding: '30px' }}>
 
                     <Col span={8}>
-                        <Card title="Thông tin khách hàng" bordered={false}>
-                        <h1>{this.props.id}</h1>
+                        <Card title="Nhập đơn hàng" bordered={false}>
+                            <h1>{this.props.id}</h1>
                         </Card>
                     </Col>
                     <Col span={16} >
-                    <Card title="Thông tin đơn hàng" bordered={false}>
-                            
+                    <Row gutter={16} style={{ paddingBottom: '30px' }}>
+                        <Card title="Thông tin đơn hàng" bordered={false} style={{ paddingBottom: '30px' }}>
+
                         </Card>
+                    </Row>
+                    <Row gutter={16} style={{ paddingBottom: '30px' }}>
+                        <Card title="Trạng thái đơn hàng" bordered={false} style={{ paddingBottom: '30px' }}>
+
+                        </Card>
+                    </Row>
                     </Col>
                 </Row>
             </div>

@@ -17,6 +17,9 @@ class Slider_Layout extends React.Component {
         this.toggle = this.toggle.bind(this);
 
     }
+    menuonclick({ item, key, keyPath }){
+        console.log('click',key);
+    }
     onCollapse(collapsed) {
         console.log(collapsed);
         this.setState({ collapsed });
@@ -34,7 +37,7 @@ class Slider_Layout extends React.Component {
                 onCollapse={this.onCollapse} >
 
                  <div className="logo" />
-                <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
+                <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" onClick={this.menuonclick} >
                     <Menu.Item key="1">
                         <NavLink to="/">
                             <Icon type="home" />
