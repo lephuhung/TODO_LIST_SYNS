@@ -9,10 +9,10 @@ class Kiemtradonhang_Layout extends React.Component {
         return (
             <div>
                 <Row gutter={24} style={{ padding: '30px' }}>
-
+ 
                     <Col span={8}>
                         <Card title="Nhập đơn hàng" bordered={false}>
-                            <h1>{this.props.id}</h1>
+                            <h1>{this.props.match.path}</h1>
                         </Card>
                     </Col>
                     <Col span={16} >
