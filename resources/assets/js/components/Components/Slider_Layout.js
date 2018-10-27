@@ -68,10 +68,14 @@ class Slider_Layout extends React.Component {
                     </SubMenu>
                     <SubMenu
                         key="sub2"
-                        title={<span><Icon type="team" /><span>Team</span></span>}
+                        title={<span><Icon type="plus-circle" /><span>Sản phẩm</span></span>}
                     >
-                        <Menu.Item key="6">Team 1</Menu.Item>
-                        <Menu.Item key="8">Team 2</Menu.Item>
+                        <Menu.Item key="6">
+                        <NavLink to="/add-product">
+                            <span>Thêm sản phẩm</span></NavLink>
+                        </Menu.Item>
+                        <Menu.Item key="8"><NavLink to="/list-product">
+                            <span>Danh sách sản phẩm</span></NavLink></Menu.Item>
                     </SubMenu>
                     <Menu.Item key="7">
                         <NavLink to="/cau-hinh">
