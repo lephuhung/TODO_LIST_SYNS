@@ -11,7 +11,7 @@
     float: left;
   }
   .trigger {
-    font-size: 18px;
+    font-size: 12px;
     line-height: 64px;
     padding: 2px 24px;
     cursor: pointer;
@@ -26,4 +26,8 @@
   }
   .them{
    padding-left: 24px;
+  }
+  body{
+    font-family:'Helvetica Neue';
+    font-size:'12px'
   }

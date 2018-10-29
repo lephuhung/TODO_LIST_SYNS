@@ -19,7 +19,7 @@ class Header_Layout extends React.Component {
 
   render() {
     return (
-      <Header style={{ background: '#FFFFFF', padding: 2 }}>
+      <Header style={{ background: '#3C8DBC', padding: 2 }}>
         <div style={{ float: "right", paddingRight: 15 }}>
           <Dropdown overlay={menu}>
             <a className="ant-dropdown-link" href="#">

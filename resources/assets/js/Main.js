@@ -4,6 +4,7 @@ import 'antd/dist/antd.css';
 import './app.css';
 import { Layout } from 'antd';
 const { Content, Footer } = Layout;
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Slider_Layout from './components/Components/Slider_Layout';
 import Header_Layout from './components/Components/Header_Layout';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
@@ -18,6 +19,8 @@ import Register from './components/Routes/Register_Layout';
 import Logout from './components/Routes/Logout_Layout';
 import { PersistGate } from 'redux-persist/integration/react';
 import Kiemtradonhang from './components/Routes/Kiemtradonhang';
+import Add_product from './components/Routes/AddProduct';
+import List_product from './components/Routes/Listproduct';
 class Example extends React.Component {
   constructor(props) {
     super(props);
@@ -47,10 +50,11 @@ class Example extends React.Component {
                         <PrivateRoute exact path={`${url}`} isAuthenticated={this.props.state.isAuthenticated} component={Todo} />
                         <PrivateRoute exact path={`${url}job`} isAuthenticated={this.props.state.isAuthenticated} component={Job} />
                         <PrivateRoute exact path={`${url}cau-hinh`} isAuthenticated={this.props.state.isAuthenticated} component={Config} />
-                        <PrivateRoute exact path={`${url}ghtk`} isAuthenticated={this.props.state.isAuthenticated} id={0} component={Kiemtradonhang} />
-                        <PrivateRoute exact path={`${url}ghn`} isAuthenticated={this.props.state.isAuthenticated} id={1} component={Kiemtradonhang} />
-                        <PrivateRoute exact path={`${url}viettel-post`} isAuthenticated={this.props.state.isAuthenticated} id={2} component={Kiemtradonhang} />
-                      
+                        <PrivateRoute exact path={`${url}ghtk`} isAuthenticated={this.props.state.isAuthenticated} component={Kiemtradonhang} />
+                        <PrivateRoute exact path={`${url}ghn`} isAuthenticated={this.props.state.isAuthenticated} component={Kiemtradonhang} />
+                        <PrivateRoute exact path={`${url}viettel-post`} isAuthenticated={this.props.state.isAuthenticated} component={Kiemtradonhang} />
+                        <PrivateRoute exact path={`${url}add-product`} isAuthenticated={this.props.state.isAuthenticated} component={Add_product} />
+                        <PrivateRoute exact path={`${url}list-product`} isAuthenticated={this.props.state.isAuthenticated} component={List_product} />
                       </Content>
                       <Footer style={{ textAlign: 'center' }}>
                         Ant Design ©2018 Created by Ant UED
