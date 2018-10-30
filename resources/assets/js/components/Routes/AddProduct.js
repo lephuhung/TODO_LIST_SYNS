@@ -4,43 +4,46 @@ import { Card } from 'antd';
 import './todo.css';
 import { Col, Row, Button, Form, FormGroup, ButtonGroup, Label, Input, InputGroup, InputGroupAddon, FormText } from 'reactstrap';
 class Add_product extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.state ={
+        this.state = {
             image: ''
-          }
-          this.onFormSubmit = this.onFormSubmit.bind(this)
-          this.onChange = this.onChange.bind(this)
-          this.fileUpload = this.fileUpload.bind(this)
+        }
+        this.onFormSubmit = this.onFormSubmit.bind(this)
+        this.onChange = this.onChange.bind(this)
+        this.fileUpload = this.fileUpload.bind(this)
     }
-    onFormSubmit(e){
-        e.preventDefault() 
-        this.fileUpload(this.state.image);
-      }
-      onChange(e) {
+    onChange(e) {
         let files = e.target.files || e.dataTransfer.files;
         if (!files.length)
-              return;
-        //this.createImage(files[0]);
+            return;
+        this.createImage(files[0]);
         //console.log(e.target.files)
-        this.setState({image:URL.createObjectURL(event.target.files[0])});
-      }
-      createImage(file) {
+        this.setState({ image: URL.createObjectURL(event.target.files[0]) });
+    }
+    createImage(file) {
         let reader = new FileReader();
         reader.onload = (e) => {
-          this.setState({
-            image: e.target.result
-          })
+            this.setState({
+                image: e.target.result
+            })
         };
         reader.readAsDataURL(file);
-      }
-      fileUpload(image){
-          console.log(this.state.image);
-        // const url = 'http://localhost:8000/api/fileupload';
-        // const formData = {file: this.state.image}
-        // return  post(url, formData)
-        //         .then(response => console.log(response))
-      }
+    }
+
+    async fileupload() {
+        const values = this.state.image
+        var self = this;
+        await axios.post('http://localhost:8888/insert', { values }, { headers: { "Authorization": `Bearer ${this.props.state.token}` } }).then((res) => {
+            if (res.data === '1') {
+                self.setState({ sucess: true });
+            } else {
+                self.setState({ errorInsert: true });
+            }
+        }).catch((e) => {
+            console.log(e);
+        });
+    }
     render() {
 
         return (
@@ -136,18 +139,18 @@ class Add_product extends React.Component {
                         <Row>
                             <Col sm={4}>
                                 <InputGroup>
-                                <Input type="file" name="file" id="exampleFile" onChange={this.onChange} />
+                                    <Input type="file" name="file" id="exampleFile" onChange={this.onChange} />
                                 </InputGroup>
                             </Col>
                         </Row>
 
 
                         <ButtonGroup style={{ marginTop: '20px' }}>
-                            <Button color='success' onClick={()=>this.onFormSubmit}>Left</Button>
+                            <Button color='success' onClick={() => this.onFormSubmit}>Left</Button>
                             <Button color='primary'>Middle</Button>
                             <Button>Right</Button>
                         </ButtonGroup>
-                        <img src={this.state.image}/>
+                        <img src={this.state.image} />
                     </Form>
                 </Card>
 

@@ -6,7 +6,7 @@ import './login.css'
 import Login_fuc from '../Fuction/Login';
 import axios from 'axios';
 
-import {LoginState,setusername } from '../Redux/Action';
+import {LoginState,setusername,addToken } from '../Redux/Action';
 class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -27,9 +27,10 @@ class Login extends React.Component {
             if (response.status === 200) {
               this.props.dispatch(LoginState());
               this.props.dispatch(setusername(response.data.user.email));
+              this.props.dispatch(addToken(response.data.token));
               this.props.history.push('/');
               localStorage.setItem('isAuthencate', true);
-              console.log(response.data.token);
+
             }
             if(response.status===400){
                 this.setState({error:'Sai thông tin đăng nhập'});
