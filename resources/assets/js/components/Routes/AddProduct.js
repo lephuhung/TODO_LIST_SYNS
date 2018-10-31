@@ -44,7 +44,7 @@ class Add_product extends React.Component {
         var self = this;
         axios.post('/api/add-product', { values }, { headers: { "Authorization": `Bearer ${this.props.state.token}` } }).then((res) => {
             if (res.status === 200) {
-                console.log(res.data);
+                console.log('Thành công',res.data);
             } else {
                console.log('lỗi');
             }
