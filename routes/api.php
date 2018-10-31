@@ -14,12 +14,12 @@ use Illuminate\Http\Request;
  */
 /*USER AUTHENCATION */
 Route::post('/register', 'UserAuthencation@register');
-Route::post('/login', 'UserAuthencation@authenticate');
+Route::post('/login', 'UserAuthencation@authenticate')->name('login');
 //Route::get('open', 'DataController@open');
 
 Route::group(['middleware' => ['jwt.verify']], function () {
-    Route::get('user', 'UserAuthencation@getAuthenticatedUser');
-    Route::post('logout', 'UserAuthencation@logout');
+    Route::get('/user', 'UserAuthencation@getAuthenticatedUser');
+    Route::post('/logout', 'UserAuthencation@logout');
 });
 /*
 TODO CONTROLLER----------------------------------------------------
