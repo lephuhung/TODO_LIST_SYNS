@@ -6,6 +6,7 @@ export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER'
 export const Login='true'
 export const Logout='truee'
 export const username='username'
+export const token='token'
 /*
  * other constants
  */
@@ -20,7 +21,9 @@ export const VisibilityFilters = {
 export function addTodos(value) {
   return { type: ADD_TODOs, value}
 }
-
+export function addToken(value) {
+  return { type: token, vaslue}
+}
 export function vissible() {
   return { type: VISSIBLE_MODALS }
 }
