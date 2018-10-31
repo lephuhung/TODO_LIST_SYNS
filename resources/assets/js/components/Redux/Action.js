@@ -22,7 +22,7 @@ export function addTodos(value) {
   return { type: ADD_TODOs, value}
 }
 export function addToken(value) {
-  return { type: token, vaslue}
+  return { type: token, value}
 }
 export function vissible() {
   return { type: VISSIBLE_MODALS }

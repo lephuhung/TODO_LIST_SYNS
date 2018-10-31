@@ -11,24 +11,25 @@ class Add_product extends React.Component {
         }
         this.onFormSubmit = this.onFormSubmit.bind(this)
         this.onChange = this.onChange.bind(this)
-        this.fileUpload = this.fileUpload.bind(this)
+        this.fileupload = this.fileupload.bind(this)
+    }
+    onFormSubmit(){
+        console.log('hihi');
+        this.fileupload();
     }
     onChange(e) {
         let files = e.target.files || e.dataTransfer.files;
         if (!files.length)
-<<<<<<< HEAD
-              return;
-        this.setState({image:URL.createObjectURL(event.target.files[0])});
-      }
-      createImage(file) {
-=======
             return;
+        this.setState({ image: URL.createObjectURL(event.target.files[0]) });
+    }
+    createImage(file) {
+        return;
         this.createImage(files[0]);
         //console.log(e.target.files)
         this.setState({ image: URL.createObjectURL(event.target.files[0]) });
     }
     createImage(file) {
->>>>>>> e3f2485fe5fe7f8aa40b53bac98a04695311195b
         let reader = new FileReader();
         reader.onload = (e) => {
             this.setState({
@@ -38,14 +39,14 @@ class Add_product extends React.Component {
         reader.readAsDataURL(file);
     }
 
-    async fileupload() {
+     fileupload() {
         const values = this.state.image
         var self = this;
-        await axios.post('http://localhost:8888/insert', { values }, { headers: { "Authorization": `Bearer ${this.props.state.token}` } }).then((res) => {
-            if (res.data === '1') {
-                self.setState({ sucess: true });
+        axios.post('/api/add-product', { values }, { headers: { "Authorization": `Bearer ${this.props.state.token}` } }).then((res) => {
+            if (res.status === 200) {
+                console.log(res.data);
             } else {
-                self.setState({ errorInsert: true });
+               console.log('lỗi');
             }
         }).catch((e) => {
             console.log(e);
@@ -134,8 +135,8 @@ class Add_product extends React.Component {
                                 <FormGroup>
                                     <Label for="exampleState" ><h6>Thuế/Giá trị gia tăng</h6></Label>
                                     <InputGroup>
-                                    <Input type="text" name="state" id="exampleState" />
-                                    <InputGroupAddon addonType="prepend">%</InputGroupAddon>
+                                        <Input type="text" name="state" id="exampleState" />
+                                        <InputGroupAddon addonType="prepend">%</InputGroupAddon>
                                     </InputGroup>
                                 </FormGroup>
                             </Col>
@@ -143,8 +144,8 @@ class Add_product extends React.Component {
                                 <FormGroup>
                                     <Label for="exampleZip"><h6>Giá sản phẩm sau thuế</h6></Label>
                                     <InputGroup>
-                                    <Input type="text" name="zip" id="exampleZip" />
-                                    <InputGroupAddon addonType="prepend">VNĐ</InputGroupAddon>
+                                        <Input type="text" name="zip" id="exampleZip" />
+                                        <InputGroupAddon addonType="prepend">VNĐ</InputGroupAddon>
                                     </InputGroup>
                                 </FormGroup>
                             </Col>
@@ -157,27 +158,21 @@ class Add_product extends React.Component {
                             </Col>
                         </Row>
                         <Row>
-                        <img src={this.state.image}/>
+                            <img src={this.state.image} />
                         </Row>
 
                         <ButtonGroup style={{ marginTop: '20px' }}>
-<<<<<<< HEAD
-                            <Button color='success' onClick={()=>this.onFormSubmit}>Lưu</Button>
+
+                            <Button color='success' onClick={() => this.onFormSubmit()}>Lưu</Button>
                             <Button color='primary'>Lưu và thêm sản phẩm mới</Button>
                             <Button>Hủy</Button>
                         </ButtonGroup>
-                       
-=======
-                            <Button color='success' onClick={() => this.onFormSubmit}>Left</Button>
-                            <Button color='primary'>Middle</Button>
-                            <Button>Right</Button>
-                        </ButtonGroup>
-                        <img src={this.state.image} />
->>>>>>> e3f2485fe5fe7f8aa40b53bac98a04695311195b
+                             <img src={this.state.image} />
+
                     </Form>
                 </Card>
 
-            </div>
+            </div >
         );
 
     }
@@ -188,6 +183,4 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     dispatch: dispatch
 })
-//const WrappedTimeRelatedForm = Form.create()(Add_product);
-
 export default connect(mapStateToProps, mapDispatchToProps)(Add_product);
