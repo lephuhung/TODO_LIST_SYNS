@@ -21,8 +21,6 @@ class Add_product extends React.Component {
         let files = e.target.files || e.dataTransfer.files;
         if (!files.length)
               return;
-        //this.createImage(files[0]);
-        //console.log(e.target.files)
         this.setState({image:URL.createObjectURL(event.target.files[0])});
       }
       createImage(file) {
@@ -114,22 +112,28 @@ class Add_product extends React.Component {
                             </Col>
                         </Row>
                         <Row form>
-                            <Col md={6}>
+                            <Col md={4}>
                                 <FormGroup>
-                                    <Label for="exampleCity">City</Label>
+                                    <Label for="exampleCity"><h6>Giá tiền</h6></Label>
                                     <Input type="text" name="city" id="exampleCity" />
                                 </FormGroup>
                             </Col>
                             <Col md={4}>
                                 <FormGroup>
-                                    <Label for="exampleState" >State</Label>
+                                    <Label for="exampleState" ><h6>Thuế/Giá trị gia tăng</h6></Label>
+                                    <InputGroup>
                                     <Input type="text" name="state" id="exampleState" />
+                                    <InputGroupAddon addonType="prepend">%</InputGroupAddon>
+                                    </InputGroup>
                                 </FormGroup>
                             </Col>
-                            <Col md={2}>
+                            <Col md={4}>
                                 <FormGroup>
-                                    <Label for="exampleZip">Zip</Label>
+                                    <Label for="exampleZip"><h6>Giá sản phẩm sau thuế</h6></Label>
+                                    <InputGroup>
                                     <Input type="text" name="zip" id="exampleZip" />
+                                    <InputGroupAddon addonType="prepend">VNĐ</InputGroupAddon>
+                                    </InputGroup>
                                 </FormGroup>
                             </Col>
                         </Row>
@@ -140,14 +144,16 @@ class Add_product extends React.Component {
                                 </InputGroup>
                             </Col>
                         </Row>
-
+                        <Row>
+                        <img src={this.state.image}/>
+                        </Row>
 
                         <ButtonGroup style={{ marginTop: '20px' }}>
-                            <Button color='success' onClick={()=>this.onFormSubmit}>Left</Button>
-                            <Button color='primary'>Middle</Button>
-                            <Button>Right</Button>
+                            <Button color='success' onClick={()=>this.onFormSubmit}>Lưu</Button>
+                            <Button color='primary'>Lưu và thêm sản phẩm mới</Button>
+                            <Button>Hủy</Button>
                         </ButtonGroup>
-                        <img src={this.state.image}/>
+                       
                     </Form>
                 </Card>
 
