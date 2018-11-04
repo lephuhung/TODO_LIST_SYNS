@@ -7,54 +7,55 @@ class Add_product extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            image: ''
+            image: '',
+            imageupload: ''
         }
         this.onFormSubmit = this.onFormSubmit.bind(this)
         this.onChange = this.onChange.bind(this)
         this.fileupload = this.fileupload.bind(this)
+        this.createImage=this.createImage.bind(this);
     }
-    onFormSubmit(){
+    onFormSubmit() {
         console.log('hihi');
-        this.fileupload();
+        this.fileupload(this.state.imageupload);
     }
     onChange(e) {
         let files = e.target.files || e.dataTransfer.files;
         if (!files.length)
             return;
         this.setState({ image: URL.createObjectURL(event.target.files[0]) });
-    }
-    createImage(file) {
-        return;
         this.createImage(files[0]);
-        //console.log(e.target.files)
-        this.setState({ image: URL.createObjectURL(event.target.files[0]) });
     }
     createImage(file) {
         let reader = new FileReader();
         reader.onload = (e) => {
             this.setState({
-                image: e.target.result
+                imageupload: e.target.result
             })
         };
         reader.readAsDataURL(file);
     }
 
-     fileupload() {
-        const values = this.state.image
-        var self = this;
-        axios.post('/api/add-product', { values }, { headers: { "Authorization": `Bearer ${this.props.state.token}` } }).then((res) => {
-            if (res.status === 200) {
-                console.log('Thành công',res.data);
-            } else {
-               console.log('lỗi');
-            }
-        }).catch((e) => {
-            console.log(e);
-        });
+    fileupload(image) {
+        const url = 'http://localhost:8000/api/add-product';
+        const formData = { 'file': this.state.imageupload }
+        return axios.post(url, {'file':image},{ headers: { "Authorization": `Bearer ${this.props.state.token}` }})
+            .then(response => console.log(response))
+        // const values = this.state.image
+
+        // axios.post('/api/add-product', { values }, { headers: { "Authorization": `Bearer ${this.props.state.token}` } }).then((res) => {
+        //     if (res.status === 200) {
+        //         console.log('Thành công', res.data);
+        //     } else {
+        //         console.log('lỗi');
+        //     }
+        // }).catch((e) => {
+        //     console.log(e);
+        // });
     }
     render() {
-
-        return (
+        console.log(process.env.PUBLIC_URL);
+        return(
             <div style={{ paddingTop: '30px' }}>
 
                 <Card >
@@ -167,8 +168,7 @@ class Add_product extends React.Component {
                             <Button color='primary'>Lưu và thêm sản phẩm mới</Button>
                             <Button>Hủy</Button>
                         </ButtonGroup>
-                             <img src={this.state.image} />
-
+                        <img src="<%= asset_url('path/to/1541345242.png') %>" />
                     </Form>
                 </Card>
 
