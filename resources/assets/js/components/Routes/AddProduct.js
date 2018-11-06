@@ -13,7 +13,7 @@ class Add_product extends React.Component {
         this.onFormSubmit = this.onFormSubmit.bind(this)
         this.onChange = this.onChange.bind(this)
         this.fileupload = this.fileupload.bind(this)
-        this.createImage=this.createImage.bind(this);
+        this.createImage = this.createImage.bind(this);
     }
     onFormSubmit() {
         console.log('hihi');
@@ -39,23 +39,21 @@ class Add_product extends React.Component {
     fileupload(image) {
         const url = 'http://localhost:8000/api/add-product';
         const formData = { 'file': this.state.imageupload }
-        return axios.post(url, {'file':image},{ headers: { "Authorization": `Bearer ${this.props.state.token}` }})
-            .then(response => console.log(response))
-        // const values = this.state.image
+        return axios.post(url, { 'file': image }, { headers: { "Authorization": `Bearer ${this.props.state.token}` } })
+            .then(res => {
+                if (res.status === 200) {
+                    console.log('Thành công', res.data);
+                } else {
+                    console.log('lỗi');
+                }
+            }).catch((e) => {
+                console.log(e);
+            });
 
-        // axios.post('/api/add-product', { values }, { headers: { "Authorization": `Bearer ${this.props.state.token}` } }).then((res) => {
-        //     if (res.status === 200) {
-        //         console.log('Thành công', res.data);
-        //     } else {
-        //         console.log('lỗi');
-        //     }
-        // }).catch((e) => {
-        //     console.log(e);
-        // });
     }
     render() {
         console.log(process.env.PUBLIC_URL);
-        return(
+        return (
             <div style={{ paddingTop: '30px' }}>
 
                 <Card >
@@ -168,11 +166,7 @@ class Add_product extends React.Component {
                             <Button color='primary'>Lưu và thêm sản phẩm mới</Button>
                             <Button>Hủy</Button>
                         </ButtonGroup>
-<<<<<<< HEAD
-                        <img src="<?php echo asset('storage/$myTheory->image')" alt="Card image cap"></img>
-=======
-                        <img src='/storage/images/1541467309.jpeg' />
->>>>>>> db2020b5c90bc67a09d4c9db3b63fa76ab399357
+                        <img src='/storage/images/1541345242.jpeg' />
                     </Form>
                 </Card>
 

@@ -17,22 +17,31 @@ class ProductController extends Controller
                 return response()->json(['user_not_found'], 404);
             } else {
                 if ($request->get('file')) {
-                    // return response()->json('Successfully added12312',200);
+                    $productname=$request->get('productname');
+                    $create_by=$request->get('create_by');
+                    $unit_id=$request->get('unit_id');
+                    $type=$request->get('type');
+                    $brand_id=$request->get('brand_id');
+                    $category_id=$request->get('category_id');
+                    $sub_category_id=$request->get('sub_category_id');
                     $image = $request->get('file');
-                    $name = time() . '.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
-                    \Image::make($request->get('file'))->save(public_path('storage/images') . $name);
-                    $fileupload = new Product;
-                    $fileupload->filename = $name;
-                    $fileupload->save();
-                    $url = Storage::url('1541345242.jpeg');
-                    return response()->json(['Successfully added',$url], 200);
-                }
-<<<<<<< HEAD
-=======
+                    //$name = time() . '.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
+                   // \Image::make($request->get('file'))->save(public_path('storage/images') . $name);
+                    $product = new Product;
+                    $product->filename = $image;
+                    $product->name=$productname;
+                    $product->unit_id=$unit_id;
+                    $product->brand_id=$brand_id;
+                    $product->category_id=$category_id;
+                    $product->type=$type;
+                    $product->sub_category_id=$sub_category_id;
+                    $product->business_id=1;
+                    $product->created_by=$create_by;
+                    $product->save();
+                    //$url = Storage::url('1541345242.jpeg');
+                    return response()->json(['Successfully added',$product], 200);
 
-                
->>>>>>> db2020b5c90bc67a09d4c9db3b63fa76ab399357
-            }
+            }}
         } catch (Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
 
             return response()->json(['token_expired'], $e->getStatusCode());
@@ -56,9 +65,9 @@ class ProductController extends Controller
             Image::make($request->get('file'))->save(public_path('images/') . $name);
         }
 
-        $fileupload = new \Product();
-        $fileupload->filename = $name;
-        $fileupload->save();
+        $product = new \Product();
+        $product->filename = $name;
+        $product->save();
         return response()->json('Successfully added');
 
     }
