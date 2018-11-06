@@ -168,7 +168,11 @@ class Add_product extends React.Component {
                             <Button color='primary'>Lưu và thêm sản phẩm mới</Button>
                             <Button>Hủy</Button>
                         </ButtonGroup>
+<<<<<<< HEAD
                         <img src="<?php echo asset('storage/$myTheory->image')" alt="Card image cap"></img>
+=======
+                        <img src='/storage/images/1541467309.jpeg' />
+>>>>>>> db2020b5c90bc67a09d4c9db3b63fa76ab399357
                     </Form>
                 </Card>
 

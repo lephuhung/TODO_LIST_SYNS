@@ -27,6 +27,11 @@ class ProductController extends Controller
                     $url = Storage::url('1541345242.jpeg');
                     return response()->json(['Successfully added',$url], 200);
                 }
+<<<<<<< HEAD
+=======
+
+                
+>>>>>>> db2020b5c90bc67a09d4c9db3b63fa76ab399357
             }
         } catch (Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
 
