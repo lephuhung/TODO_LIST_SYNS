@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Storage;
 use App\Product;
 use Illuminate\Http\Request;
 use Intervention\Image\Image;
@@ -20,17 +20,13 @@ class ProductController extends Controller
                     // return response()->json('Successfully added12312',200);
                     $image = $request->get('file');
                     $name = time() . '.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
-                    \Image::make($request->get('file'))->save(public_path('images/') . $name);
+                    \Image::make($request->get('file'))->save(public_path('storage/images') . $name);
                     $fileupload = new Product;
                     $fileupload->filename = $name;
                     $fileupload->save();
-                    return response()->json('Successfully added', 200);
+                    $url = Storage::url('1541345242.jpeg');
+                    return response()->json(['Successfully added',$url], 200);
                 }
-
-                // //  $fileupload = new Product;
-                // //  $fileupload->filename=$name;
-                // //  $fileupload->save();
-                // return response()->json('Successfully added', 200);
             }
         } catch (Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
 
