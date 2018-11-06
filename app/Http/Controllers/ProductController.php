@@ -27,10 +27,7 @@ class ProductController extends Controller
                     return response()->json('Successfully added', 200);
                 }
 
-                // //  $fileupload = new Product;
-                // //  $fileupload->filename=$name;
-                // //  $fileupload->save();
-                // return response()->json('Successfully added', 200);
+                
             }
         } catch (Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
 

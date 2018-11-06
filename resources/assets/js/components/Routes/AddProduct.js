@@ -168,7 +168,7 @@ class Add_product extends React.Component {
                             <Button color='primary'>Lưu và thêm sản phẩm mới</Button>
                             <Button>Hủy</Button>
                         </ButtonGroup>
-                        <img src="<%= asset_url('path/to/1541345242.png') %>" />
+                        <img src='/storage/images/1541467309.jpeg' />
                     </Form>
                 </Card>
 

@@ -17,7 +17,7 @@ class Todo extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('congviec');
-            $table->integer('userID');
+            $table->integer('userid');
             $table->timestamp('created_at')->nullable();
         });
     }
