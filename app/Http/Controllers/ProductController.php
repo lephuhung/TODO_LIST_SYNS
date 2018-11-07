@@ -57,18 +57,31 @@ class ProductController extends Controller
         }
 
     }
-    public function saveImage(Request $request)
+    public function getProduct(Request $request)
     {
-        if ($request->input('file')) {
-            $image = $request->get('file');
-            $name = time() . '.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
-            Image::make($request->get('file'))->save(public_path('images/') . $name);
-        }
+        try {
 
-        $product = new \Product();
-        $product->filename = $name;
-        $product->save();
-        return response()->json('Successfully added');
+            if (!$user = JWTAuth::parseToken()->authenticate()) {
+                return response()->json(['user_not_found'], 404);
+            } else {
+                    $product= new Product;
+                    $list_product=Product::where('business_id',$request->get('business_id'))->get();
+                    return response()->json(['Product_list'=>$list_product], 200);
+
+            }
+        } catch (Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
+
+            return response()->json(['token_expired'], $e->getStatusCode());
+
+        } catch (Tymon\JWTAuth\Exceptions\TokenInvalidException $e) {
+
+            return response()->json(['token_invalid'], $e->getStatusCode());
+
+        } catch (Tymon\JWTAuth\Exceptions\JWTException $e) {
+
+            return response()->json(['token_absent'], $e->getStatusCode());
+
+        }
 
     }
 }

@@ -21,6 +21,7 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     Route::get('/user', 'UserAuthencation@getAuthenticatedUser');
     Route::post('/logout', 'UserAuthencation@logout');
     Route::post('/add-product','ProductController@insert');
+    Route::post('/list-product','ProductController@getProduct');
 });
 /*
 TODO CONTROLLER----------------------------------------------------

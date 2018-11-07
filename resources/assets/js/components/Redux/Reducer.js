@@ -8,35 +8,31 @@ const initialState = {
   username: '',
   token: '',
   api_key_ghn: '5b9cc06394c06b624c586416',
-  dataSource: [{
-    key: '1',
-    name: 'Mike',
-    age: 32,
-    address: '10 Downing Street',
-    phone: '09209434'
-  }, {
-    key: '2',
-    name: 'John',
-    age: 42,
-    address: '10 Downing Street',
-    phone: '131231'
-  }],
+  dataSource: [],
   columns: [{
-    title: 'Name',
+    title: 'Tên sản phẩm',
     dataIndex: 'name',
     key: 'name',
   }, {
-    title: 'Age',
-    dataIndex: 'age',
-    key: 'age',
+    title: 'Loại',
+    dataIndex: 'type',
+    key: 'type',
   }, {
-    title: 'Address',
-    dataIndex: 'address',
-    key: 'address',
+    title: 'Đơn vị',
+    dataIndex: 'unit_id',
+    key: 'unit_id',
   }, {
-    title: 'Number',
-    dataIndex: 'phone',
-    key: 'phone'
+    title: 'Nhãn hiệu',
+    dataIndex: 'brand_id',
+    key: 'brand_id'
+  },{
+    title: 'Danh mục',
+    dataIndex: 'category_id',
+    key: 'category_id'
+  },{
+    title: 'Danh mục con',
+    dataIndex: 'sub_category_id',
+    key: 'sub_category_id'
   }
   ]
 }

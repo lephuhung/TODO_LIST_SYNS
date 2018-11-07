@@ -16,11 +16,9 @@ class DataTable extends React.Component{
     }
 }
 const mapStateToProps = state => ({
-    //todos: getVisibleTodos(state.todos, state.visibilityFilter)
     state:state
   })
 const mapDispatchToProps = dispatch => ({
-    //toggleTodo: id => dispatch(toggleTodo(id))
     dispatch:dispatch
   })
 export default connect(mapStateToProps,mapDispatchToProps)(DataTable);
