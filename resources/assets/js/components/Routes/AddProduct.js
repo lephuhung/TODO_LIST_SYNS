@@ -8,7 +8,15 @@ class Add_product extends React.Component {
         super(props);
         this.state = {
             image: '',
-            imageupload: ''
+            imageupload: '',
+            productname: '',
+            unit_id: '',
+            type: '',
+            brand_id: '',
+            category_id: '',
+            sub_category_id: '',
+            create_by: ''
+
         }
         this.onFormSubmit = this.onFormSubmit.bind(this)
         this.onChange = this.onChange.bind(this)
@@ -20,11 +28,16 @@ class Add_product extends React.Component {
         this.fileupload(this.state.imageupload);
     }
     onChange(e) {
-        let files = e.target.files || e.dataTransfer.files;
-        if (!files.length)
-            return;
-        this.setState({ image: URL.createObjectURL(event.target.files[0]) });
-        this.createImage(files[0]);
+        if (e.target.name === 'file') {
+            let files = e.target.files || e.dataTransfer.files;
+            if (!files.length)
+                return;
+            this.setState({ image: URL.createObjectURL(event.target.files[0]) });
+            this.createImage(files[0]);
+        }
+        else {
+            this.setState({ [e.target.name]: e.target.value });
+        }
     }
     createImage(file) {
         let reader = new FileReader();
@@ -37,18 +50,19 @@ class Add_product extends React.Component {
     }
 
     fileupload(image) {
-        const url = 'http://localhost:8000/api/add-product';
-        const formData = { 'file': this.state.imageupload }
-        return axios.post(url, { 'file': image }, { headers: { "Authorization": `Bearer ${this.props.state.token}` } })
-            .then(res => {
-                if (res.status === 200) {
-                    console.log('Thành công', res.data);
-                } else {
-                    console.log('lỗi');
-                }
-            }).catch((e) => {
-                console.log(e);
-            });
+        // const url = 'http://localhost:8000/api/add-product';
+        // const formData = { 'file': this.state.imageupload }
+        // return axios.post(url, { 'file': image }, { headers: { "Authorization": `Bearer ${this.props.state.token}` } })
+        //     .then(res => {
+        //         if (res.status === 200) {
+        //             console.log('Thành công', res.data);
+        //         } else {
+        //             console.log('lỗi');
+        //         }
+        //     }).catch((e) => {
+        //         console.log(e);
+        //     });
+        console.log(this.state);
 
     }
     render() {
@@ -62,30 +76,28 @@ class Add_product extends React.Component {
                             <Col md={4}>
                                 <FormGroup>
                                     <Label for="exampleEmail" size="14px" color="primary"><h6>Tên sản phẩm</h6></Label>
-                                    <Input type="email" name="email" id="exampleEmail" placeholder="Tên sản phẩm" />
+                                    <Input type="email" name="productname" id="exampleEmail" placeholder="Tên sản phẩm" onChange={this.onChange} />
                                 </FormGroup>
                             </Col>
                             <Col md={4}>
                                 <FormGroup>
                                     <Label for="examplePassword"><h6>Nhãn hiệu</h6></Label>
-                                    <Input type="select" name="select" id="exampleSelect" placeholder="Vui lòng chọn">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
+                                    <Input type="select" name="brand_id" id="exampleSelect" placeholder="Vui lòng chọn" onChange={this.onChange}>
+                                        <option value="1">Apple</option>
+                                        <option value="2">Lenovo</option>
+                                        <option value="3">China</option>
+                                        <option value="4">Việt Nam</option>
                                     </Input>
                                 </FormGroup>
                             </Col>
                             <Col md={4}>
                                 <FormGroup>
                                     <Label for="examplePassword"><h6>Đơn vị</h6></Label>
-                                    <Input type="select" name="select" id="exampleSelect">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
+                                    <Input type="select" name="unit_id" id="exampleSelect" onChange={this.onChange}>
+                                        <option value="1">Chiếc</option>
+                                        <option value="2">gram</option>
+                                        <option value="3">Hộp</option>
+                                        <option value="4">Vỉ/Lốc</option>
                                     </Input>
                                 </FormGroup>
                             </Col>
@@ -94,24 +106,26 @@ class Add_product extends React.Component {
                             <Col md={4}>
                                 <FormGroup>
                                     <Label for="exampleEmail" ><h6>Danh mục</h6></Label>
-                                    <Input type="select" name="select" id="exampleSelect">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
+                                    <Input type="select" name="category_id" id="exampleSelect" onChange={this.onChange}>
+                                        <option value="1">Đồ điện tử</option>
+                                        <option value="2">Đồ may mặc</option>
+                                        <option value="3">Đồ ăn</option>
+                                        <option value="4">Thuốc</option>
                                     </Input>
                                 </FormGroup>
                             </Col>
                             <Col md={4}>
                                 <FormGroup>
                                     <Label for="examplePassword"><h6>Danh mục con</h6></Label>
-                                    <Input type="select" name="select" id="exampleSelect">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
+                                    <Input type="select" name="sub_category_id" id="exampleSelect" onChange={this.onChange}>
+                                        <option value="1">Máy tính</option>
+                                        <option value="2">Điện thoại</option>
+                                        <option value="3">Quần dài</option>
+                                        <option value="4">Áo cộc tay</option>
+                                        <option value="5">Thuốc viên</option>
+                                        <option value="6">Thuốc hòa tan</option>
+                                        <option value="7">Thiết bị ngoại vi</option>
+                                        <option value="8">Áo khoác</option>
                                     </Input>
                                 </FormGroup>
                             </Col>
@@ -150,6 +164,16 @@ class Add_product extends React.Component {
                             </Col>
                         </Row>
                         <Row>
+                            <Col md={4}>
+                                <FormGroup>
+                                    <Label for="exampleCity"><h6>Loại hàng</h6></Label>
+                                    <Input type="select" name="type" id="select_type" onChange={this.onChange}>
+                                        <option value="single">Hàng đơn</option>
+                                        <option value="variable">Hàng theo số lượng</option>
+
+                                    </Input>
+                                </FormGroup>
+                            </Col>
                             <Col sm={4}>
                                 <InputGroup>
                                     <Input type="file" name="file" id="exampleFile" onChange={this.onChange} />
