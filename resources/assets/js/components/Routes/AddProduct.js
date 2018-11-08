@@ -50,18 +50,23 @@ class Add_product extends React.Component {
     }
 
     fileupload(image) {
-        // const url = 'http://localhost:8000/api/add-product';
-        // const formData = { 'file': this.state.imageupload }
-        // return axios.post(url, { 'file': image }, { headers: { "Authorization": `Bearer ${this.props.state.token}` } })
-        //     .then(res => {
-        //         if (res.status === 200) {
-        //             console.log('Thành công', res.data);
-        //         } else {
-        //             console.log('lỗi');
-        //         }
-        //     }).catch((e) => {
-        //         console.log(e);
-        //     });
+        const url = 'http://localhost:8000/api/add-product';
+        const formData = { 'file': this.state.imageupload }
+        return axios.post(url, { 'productname':this.state.productname,'file': image, unit_id:this.state.unit_id,
+                                type:this.state.type, brand_id:this.state.brand_id,
+                                category_id:this.state.category_id, sub_category_id:this.state.sub_category_id,
+                                
+    
+    }, { headers: { "Authorization": `Bearer ${this.props.state.token}` } })
+            .then(res => {
+                if (res.status === 200) {
+                    console.log('Thành công', res.data);
+                } else {
+                    console.log('lỗi');
+                }
+            }).catch((e) => {
+                console.log(e);
+            });
         console.log(this.state);
 
     }
@@ -82,7 +87,8 @@ class Add_product extends React.Component {
                             <Col md={4}>
                                 <FormGroup>
                                     <Label for="examplePassword"><h6>Nhãn hiệu</h6></Label>
-                                    <Input type="select" name="brand_id" id="exampleSelect" placeholder="Vui lòng chọn" onChange={this.onChange}>
+                                    <Input type="select" name="brand_id" id="exampleSelect" onChange={this.onChange}>
+                                        <option value="0"> Vui lòng lựa chọn</option>
                                         <option value="1">Apple</option>
                                         <option value="2">Lenovo</option>
                                         <option value="3">China</option>
@@ -94,6 +100,7 @@ class Add_product extends React.Component {
                                 <FormGroup>
                                     <Label for="examplePassword"><h6>Đơn vị</h6></Label>
                                     <Input type="select" name="unit_id" id="exampleSelect" onChange={this.onChange}>
+                                        <option value="0"> Vui lòng lựa chọn</option>
                                         <option value="1">Chiếc</option>
                                         <option value="2">gram</option>
                                         <option value="3">Hộp</option>
@@ -107,6 +114,7 @@ class Add_product extends React.Component {
                                 <FormGroup>
                                     <Label for="exampleEmail" ><h6>Danh mục</h6></Label>
                                     <Input type="select" name="category_id" id="exampleSelect" onChange={this.onChange}>
+                                        <option value="0"> Vui lòng lựa chọn</option>
                                         <option value="1">Đồ điện tử</option>
                                         <option value="2">Đồ may mặc</option>
                                         <option value="3">Đồ ăn</option>
@@ -118,6 +126,7 @@ class Add_product extends React.Component {
                                 <FormGroup>
                                     <Label for="examplePassword"><h6>Danh mục con</h6></Label>
                                     <Input type="select" name="sub_category_id" id="exampleSelect" onChange={this.onChange}>
+                                        <option value="0"> Vui lòng lựa chọn</option>
                                         <option value="1">Máy tính</option>
                                         <option value="2">Điện thoại</option>
                                         <option value="3">Quần dài</option>

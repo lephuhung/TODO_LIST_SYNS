@@ -13,7 +13,14 @@ const initialState = {
     title: 'Tên sản phẩm',
     dataIndex: 'name',
     key: 'name',
-  }, {
+  },
+  //{
+  //   title: 'Ảnh',
+  //   key: 'filename',
+  //   render:(record)=><img src='/storage/images/1541345242.jpeg'/>
+    
+  // }, 
+  {
     title: 'Loại',
     dataIndex: 'type',
     key: 'type',

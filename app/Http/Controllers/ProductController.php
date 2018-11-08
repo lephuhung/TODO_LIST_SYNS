@@ -18,17 +18,17 @@ class ProductController extends Controller
             } else {
                 if ($request->get('file')) {
                     $productname=$request->get('productname');
-                    $create_by=$request->get('create_by');
+                    
                     $unit_id=$request->get('unit_id');
                     $type=$request->get('type');
                     $brand_id=$request->get('brand_id');
                     $category_id=$request->get('category_id');
                     $sub_category_id=$request->get('sub_category_id');
                     $image = $request->get('file');
-                    //$name = time() . '.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
-                   // \Image::make($request->get('file'))->save(public_path('storage/images') . $name);
+                    $name = time() . '.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
+                    \Image::make($request->get('file'))->save(public_path('storage/images') . $name);
                     $product = new Product;
-                    $product->filename = $image;
+                    $product->filename = $name;
                     $product->name=$productname;
                     $product->unit_id=$unit_id;
                     $product->brand_id=$brand_id;
@@ -36,10 +36,10 @@ class ProductController extends Controller
                     $product->type=$type;
                     $product->sub_category_id=$sub_category_id;
                     $product->business_id=1;
-                    $product->created_by=$create_by;
+                    $product->created_by=$user->id;
                     $product->save();
                     //$url = Storage::url('1541345242.jpeg');
-                    return response()->json(['Successfully added',$product], 200);
+                    return response()->json(['Successfully added'=>$product], 200);
 
             }}
         } catch (Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
@@ -66,7 +66,7 @@ class ProductController extends Controller
             } else {
                     $product= new Product;
                     $list_product=Product::where('business_id',$request->get('business_id'))->get();
-                    return response()->json(['Product_list'=>$list_product], 200);
+                    return response()->json([$list_product], 200);
 
             }
         } catch (Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
