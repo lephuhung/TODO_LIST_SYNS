@@ -185,6 +185,7 @@ class Add_product extends React.Component {
                             </Col>
                             <Col sm={4}>
                                 <InputGroup>
+                                    <Label for="exampleZip"><h6>Hình ảnh mặt hàng</h6></Label>
                                     <Input type="file" name="file" id="exampleFile" onChange={this.onChange} />
                                 </InputGroup>
                             </Col>
@@ -195,11 +196,11 @@ class Add_product extends React.Component {
 
                         <ButtonGroup style={{ marginTop: '20px' }}>
 
-                            <Button color='success' onClick={() => this.onFormSubmit()}>Lưu</Button>
-                            <Button color='primary'>Lưu và thêm sản phẩm mới</Button>
-                            <Button>Hủy</Button>
+                            <Button color='success' onClick={() => this.onFormSubmit()}> Lưu </Button>
+                            <Button color='primary'> Lưu và thêm sản phẩm mới </Button>
+                            <Button> Hủy </Button>
                         </ButtonGroup>
-                        <img src='/storage/images/1541345242.jpeg' />
+                      
                     </Form>
                 </Card>
 

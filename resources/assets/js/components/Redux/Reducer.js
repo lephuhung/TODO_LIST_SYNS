@@ -8,40 +8,6 @@ const initialState = {
   username: '',
   token: '',
   api_key_ghn: '5b9cc06394c06b624c586416',
-  dataSource: [],
-  columns: [{
-    title: 'Tên sản phẩm',
-    dataIndex: 'name',
-    key: 'name',
-  },
-  //{
-  //   title: 'Ảnh',
-  //   key: 'filename',
-  //   render:(record)=><img src='/storage/images/1541345242.jpeg'/>
-    
-  // }, 
-  {
-    title: 'Loại',
-    dataIndex: 'type',
-    key: 'type',
-  }, {
-    title: 'Đơn vị',
-    dataIndex: 'unit_id',
-    key: 'unit_id',
-  }, {
-    title: 'Nhãn hiệu',
-    dataIndex: 'brand_id',
-    key: 'brand_id'
-  },{
-    title: 'Danh mục',
-    dataIndex: 'category_id',
-    key: 'category_id'
-  },{
-    title: 'Danh mục con',
-    dataIndex: 'sub_category_id',
-    key: 'sub_category_id'
-  }
-  ]
 }
 function todoApp(state = initialState, action) {
   switch (action.type) {

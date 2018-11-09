@@ -18,7 +18,6 @@ class ProductController extends Controller
             } else {
                 if ($request->get('file')) {
                     $productname=$request->get('productname');
-                    
                     $unit_id=$request->get('unit_id');
                     $type=$request->get('type');
                     $brand_id=$request->get('brand_id');
@@ -38,7 +37,6 @@ class ProductController extends Controller
                     $product->business_id=1;
                     $product->created_by=$user->id;
                     $product->save();
-                    //$url = Storage::url('1541345242.jpeg');
                     return response()->json(['Successfully added'=>$product], 200);
 
             }}

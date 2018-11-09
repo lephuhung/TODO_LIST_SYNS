@@ -8,7 +8,43 @@ class List_product extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            dataSource: []
+            dataSource: [],
+            columns: [{
+                title: 'Tên sản phẩm',
+                dataIndex: 'name',
+                key: 'name',
+              },
+              {
+                title: 'Ảnh',
+                key: 'filename',
+                dataIndex:'filename',
+                render:(record)=>(<img style={{width:'50px',height:'50px'}} src={`/storage/images/${record} `}/>)
+                
+               }, 
+              {
+                title: 'Loại',
+                dataIndex: 'type',
+                key: 'type',
+              }, {
+                title: 'Đơn vị',
+                dataIndex: 'unit_id',
+                key: 'unit_id',
+              }, 
+                {
+                title: 'Nhãn hiệu',
+                dataIndex: 'brand_id',
+                key: 'brand_id'
+              },{
+                title: 'Danh mục',
+                dataIndex: 'category_id',
+                key: 'category_id'
+              },{
+                title: 'Danh mục con',
+                dataIndex: 'sub_category_id',
+                key: 'sub_category_id'
+              }
+              ]
+            
         }
     }
     componentDidMount() {
@@ -31,7 +67,7 @@ class List_product extends React.Component {
             <div>
                 <Row gutter={16} style={{ padding: '30px' }}>
                     <Card title="Danh sách sản phẩm" bordered={false}>
-                        <Table dataSource={this.state.dataSource[0]} columns={this.props.state.columns}/>
+                        <Table dataSource={this.state.dataSource[0]} columns={this.state.columns}/>
                            
                     </Card>
                 </Row>
