@@ -48,5 +48,6 @@ class Bussiness extends Migration
     public function down()
     {
         //
+        Schema::dropIfExists('business');
     }
 }

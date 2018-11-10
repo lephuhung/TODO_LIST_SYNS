@@ -19,6 +19,9 @@ class ProductController extends Controller
                 if ($request->get('file')) {
                     $productname=$request->get('productname');
                     $unit_id=$request->get('unit_id');
+                    $price=$request->get('price');
+                    $number=$request->get('number');
+                    $percent=$request->get('percent');
                     $type=$request->get('type');
                     $brand_id=$request->get('brand_id');
                     $category_id=$request->get('category_id');
@@ -28,6 +31,9 @@ class ProductController extends Controller
                     \Image::make($request->get('file'))->save(public_path('storage/images') . $name);
                     $product = new Product;
                     $product->filename = $name;
+                    $product->price=$price;
+                    $product->number=$number;
+                    $product->percent=$percent;
                     $product->name=$productname;
                     $product->unit_id=$unit_id;
                     $product->brand_id=$brand_id;

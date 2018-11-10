@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Card } from 'antd';
+import { Card, message } from 'antd';
 import './todo.css';
 import { Col, Row, Button, Form, FormGroup, ButtonGroup, Label, Input, InputGroup, InputGroupAddon, FormText } from 'reactstrap';
 class Add_product extends React.Component {
@@ -15,7 +15,10 @@ class Add_product extends React.Component {
             brand_id: '',
             category_id: '',
             sub_category_id: '',
-            create_by: ''
+            create_by: '',
+            number:'',
+            price:'',
+            percent:''
 
         }
         this.onFormSubmit = this.onFormSubmit.bind(this)
@@ -24,8 +27,8 @@ class Add_product extends React.Component {
         this.createImage = this.createImage.bind(this);
     }
     onFormSubmit() {
-        console.log('hihi');
         this.fileupload(this.state.imageupload);
+        console.log(this.state);
     }
     onChange(e) {
         if (e.target.name === 'file') {
@@ -51,18 +54,18 @@ class Add_product extends React.Component {
 
     fileupload(image) {
         const url = 'http://localhost:8000/api/add-product';
-        const formData = { 'file': this.state.imageupload }
         return axios.post(url, { 'productname':this.state.productname,'file': image, unit_id:this.state.unit_id,
-                                type:this.state.type, brand_id:this.state.brand_id,
+                                type:this.state.type, brand_id:this.state.brand_id,number:this.state.number,price:this.state.price,
+                                percent:this.state.percent,
                                 category_id:this.state.category_id, sub_category_id:this.state.sub_category_id,
                                 
     
     }, { headers: { "Authorization": `Bearer ${this.props.state.token}` } })
             .then(res => {
                 if (res.status === 200) {
-                    console.log('Thành công', res.data);
+                    message.success('Processing complete!')
                 } else {
-                    console.log('lỗi');
+                    message.warning('Processing fail!')
                 }
             }).catch((e) => {
                 console.log(e);
@@ -71,7 +74,6 @@ class Add_product extends React.Component {
 
     }
     render() {
-        console.log(process.env.PUBLIC_URL);
         return (
             <div style={{ paddingTop: '30px' }}>
 
@@ -141,7 +143,7 @@ class Add_product extends React.Component {
                             <Col md={4}>
                                 <FormGroup>
                                     <Label for="examplePassword" style={{ font: 'bold' }}><h6>Số lượng</h6></Label>
-                                    <Input type="text" name="select" id="exampleSelect">
+                                    <Input type="text" name="number" id="exampleSelect" onChange={this.onChange}>
                                     </Input>
                                 </FormGroup>
                             </Col>
@@ -150,14 +152,14 @@ class Add_product extends React.Component {
                             <Col md={4}>
                                 <FormGroup>
                                     <Label for="exampleCity"><h6>Giá tiền</h6></Label>
-                                    <Input type="text" name="city" id="exampleCity" />
+                                    <Input type="text" name="price" id="exampleCity" onChange={this.onChange} />
                                 </FormGroup>
                             </Col>
                             <Col md={4}>
                                 <FormGroup>
                                     <Label for="exampleState" ><h6>Thuế/Giá trị gia tăng</h6></Label>
                                     <InputGroup>
-                                        <Input type="text" name="state" id="exampleState" />
+                                        <Input type="text" name="percent" id="exampleState" onChange={this.onChange}/>
                                         <InputGroupAddon addonType="prepend">%</InputGroupAddon>
                                     </InputGroup>
                                 </FormGroup>

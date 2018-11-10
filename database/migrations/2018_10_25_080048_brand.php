@@ -33,6 +33,6 @@ class Brand extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('brands');
     }
 }

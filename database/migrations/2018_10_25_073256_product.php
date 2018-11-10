@@ -44,6 +44,9 @@ class Product extends Migration
             $table->index('business_id');
             $table->index('unit_id');
             $table->index('created_by');
+            $table->float('price');
+            $table->integer('number');
+            $table->integer('percent');
         });
     }
 

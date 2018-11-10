@@ -18,14 +18,20 @@ class List_product extends React.Component {
                 title: 'Ảnh',
                 key: 'filename',
                 dataIndex:'filename',
-                render:(record)=>(<img style={{width:'50px',height:'50px'}} src={`/storage/images/${record} `}/>)
+                render:(record)=>(<img style={{width:'50px',height:'50px'}} src={`/storage/images${record} `}/>)
                 
                }, 
               {
                 title: 'Loại',
                 dataIndex: 'type',
                 key: 'type',
-              }, {
+              }, 
+              , 
+              {
+                title: 'Giá tiền',
+                dataIndex: 'price',
+                key: 'price',
+              },{
                 title: 'Đơn vị',
                 dataIndex: 'unit_id',
                 key: 'unit_id',
