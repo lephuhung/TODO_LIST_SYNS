@@ -33,13 +33,13 @@ class List_product extends React.Component {
                 key: 'price',
               },{
                 title: 'Đơn vị',
-                dataIndex: 'unit_id',
-                key: 'unit_id',
+                dataIndex: 'short_name',
+                key: 'short_name',
               }, 
                 {
                 title: 'Nhãn hiệu',
-                dataIndex: 'brand_id',
-                key: 'brand_id'
+                dataIndex: 'brands_name',
+                key: 'brands_names'
               },{
                 title: 'Danh mục',
                 dataIndex: 'category_id',
@@ -59,6 +59,7 @@ class List_product extends React.Component {
             .then(res => {
                 if (res.status === 200) {
                     this.setState({ dataSource: res.data });
+                   console.log(res.data);
                 } else {
                     console.log('lỗi');
                 }
