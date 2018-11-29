@@ -11,7 +11,7 @@ class ProductController extends Controller
 {
     public function insert(Request $request)
     {
-        try {
+        
 
             if (!$user = JWTAuth::parseToken()->authenticate()) {
                 return response()->json(['user_not_found'], 404);
@@ -45,6 +45,7 @@ class ProductController extends Controller
                     $product->save();
                     return response()->json(['Successfully added' => $product], 200);
 
+<<<<<<< HEAD
                 }}
         } catch (Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
 
@@ -60,10 +61,14 @@ class ProductController extends Controller
 
         }
 
+=======
+            }}
+        
+>>>>>>> 0b7961290075bbfc625761910c8c77415450b9fb
     }
     public function getProduct(Request $request)
     {
-        try {
+        
 
             if (!$user = JWTAuth::parseToken()->authenticate()) {
                 return response()->json(['user_not_found'], 404);
@@ -78,19 +83,7 @@ class ProductController extends Controller
                 return response()->json([$users], 200);
 
             }
-        } catch (Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
-
-            return response()->json(['token_expired'], $e->getStatusCode());
-
-        } catch (Tymon\JWTAuth\Exceptions\TokenInvalidException $e) {
-
-            return response()->json(['token_invalid'], $e->getStatusCode());
-
-        } catch (Tymon\JWTAuth\Exceptions\JWTException $e) {
-
-            return response()->json(['token_absent'], $e->getStatusCode());
-
-        }
+       
 
     }
 }
